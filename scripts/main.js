@@ -10,10 +10,33 @@
 */
 
 
-function handValue (hand) {
+function handValue(hand) {
+  let currentHand = 0;
 
+  for (let i = 0; i < hand.length; i++) {
 
-  return;
+    if ((hand[i] === "J") || (hand[i] === "Q") || (hand[i] === "K")) {
+      hand[i] = "10";
+      currentHand += parseInt(hand[i]);
+    } else if (hand[i] !== "A") {
+      currentHand += parseInt(hand[i]);
+    }
+  }
+
+  for (let k = 0; k < hand.length; k++) {
+    if (hand[k] === "A") {
+      if (currentHand >= 11) {
+        hand[k] = "1";
+        currentHand += parseInt(hand[k]);
+      } else {
+        hand[k] = "11";
+        currentHand += parseInt(hand[k]);
+      }
+
+    }
+  }
+  console.log(hand, currentHand);
+  return currentHand;
 }
 
 
